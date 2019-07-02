@@ -50,6 +50,18 @@ class StateController {
       return res.status(400).json({ error: 'Invalid Id.' });
     }
   }
+
+  async delete(req, res) {
+    try {
+      const state = await State.findByIdAndDelete(req.params.id);
+      if (!state) {
+        return res.status(400).json({ error: 'State not found.' });
+      }
+      return res.json({});
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid Id.' });
+    }
+  }
 }
 
 module.exports = new StateController();

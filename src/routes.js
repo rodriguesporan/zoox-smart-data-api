@@ -6,5 +6,6 @@ const routes = new Router();
 routes.post('/states', StateController.store);
 routes.get('/states', StateController.index);
 routes.put('/states/:id', StateController.update);
+routes.delete('/states/:id', StateController.delete);
 
 module.exports = routes;
