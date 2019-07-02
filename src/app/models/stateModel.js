@@ -11,6 +11,7 @@ const StateSchema = new Schema(
     uf: {
       type: String,
       required: true,
+      uppercase: true,
       unique: true,
       index: true,
     },
