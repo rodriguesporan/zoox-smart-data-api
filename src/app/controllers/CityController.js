@@ -11,17 +11,22 @@ class CityController {
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails.' });
     }
-    const state = await State.findById(req.body.state);
-    if (!state) {
-      return res.status(400).json({ error: 'State does not exists.' });
-    }
     try {
-      const city = await City.create(req.body);
-      state.cities.push(city);
-      await state.save();
-      return res.json(city);
-    } catch ({ errmsg: error }) {
-      return res.status(400).json({ error });
+      const state = await State.findById(req.body.state);
+      if (!state) {
+        return res.status(400).json({ error: 'State does not exists.' });
+      }
+
+      try {
+        const city = await City.create(req.body);
+        state.cities.push(city);
+        await state.save();
+        return res.json(city);
+      } catch ({ errmsg: error }) {
+        return res.status(400).json({ error });
+      }
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid state.' });
     }
   }
 
@@ -41,9 +46,13 @@ class CityController {
       return res.status(400).json({ error: 'Validation fails.' });
     }
     const { state: stateId } = req.body;
-    const state = await State.findById(stateId);
-    if (stateId && !state) {
-      return res.status(400).json({ error: 'State does not exists.' });
+    try {
+      const state = await State.findById(stateId);
+      if (stateId && !state) {
+        return res.status(400).json({ error: 'State does not exists.' });
+      }
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid state.' });
     }
     try {
       const city = await City.findByIdAndUpdate(req.params.id, req.body, {
