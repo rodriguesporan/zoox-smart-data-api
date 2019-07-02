@@ -2,6 +2,9 @@ const yup = require('yup');
 const State = require('../models/stateModel');
 
 class StateController {
+  /**
+   * Cria um novo estado
+   */
   async store(req, res) {
     const schema = yup.object().shape({
       name: yup.string().required(),
@@ -22,6 +25,9 @@ class StateController {
     }
   }
 
+  /**
+   * Cria lista todos os estados
+   */
   async index(req, res) {
     const states = await State.find({})
       .populate({ path: 'cities', select: ['name'] })
@@ -29,6 +35,9 @@ class StateController {
     return res.json(states);
   }
 
+  /**
+   * Atualiza um estado
+   */
   async update(req, res) {
     const schema = yup.object().shape({
       name: yup.string(),
@@ -53,6 +62,9 @@ class StateController {
     }
   }
 
+  /**
+   * Deleta um estado
+   */
   async delete(req, res) {
     try {
       const state = await State.findByIdAndDelete(req.params.id);
