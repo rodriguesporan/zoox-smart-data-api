@@ -1,6 +1,8 @@
 # Zoox Smart Data API
 ## Projeto de Avaliação do Desenvolvedor
 
+[Documentação da API](https://documenter.getpostman.com/view/4046195/S1a8yjzF)
+
 Desenvolver uma API REST usando:
 - Node.JS.
 - Banco de dados: MongoDB
