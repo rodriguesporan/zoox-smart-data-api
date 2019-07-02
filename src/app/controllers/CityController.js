@@ -66,6 +66,23 @@ class CityController {
       return res.status(400).json({ error: 'Invalid Id.' });
     }
   }
+
+  async delete(req, res) {
+    try {
+      const city = await City.findByIdAndDelete(req.params.id);
+      if (!city) {
+        return res.status(400).json({ error: 'City not found.' });
+      }
+      const state = await State.findById(city.state);
+      // eslint-disable-next-line no-underscore-dangle
+      const cities = state.cities.filter(c => c._id !== req.params.id);
+      state.cities = cities;
+      await state.save();
+      return res.json({});
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid Id.' });
+    }
+  }
 }
 
 module.exports = new CityController();
