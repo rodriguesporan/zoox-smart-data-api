@@ -1,7 +1,7 @@
-const mongoose = require('Mongoose');
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const stateSchema = new Schema({
+const StateSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -13,5 +13,4 @@ const stateSchema = new Schema({
 }, {
   timestamps: true,
 });
-
-module.exports = mongoose.model('State', stateSchema);
+module.exports = mongoose.model('State', StateSchema);
