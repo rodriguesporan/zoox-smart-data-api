@@ -16,17 +16,17 @@ A API deverá expor endpoints para CRUD de cidade e estado:
    - data da última alteração
 
 2. Cidade:
-  - id
-  - nome
-  - estadoId
-  - data de criação
-  - data da última alteração
+   - id
+   - nome
+   - estadoId
+   - data de criação
+   - data da última alteração
 
 Operações mínimas para cada entidade:
- - Inserir
- - Alterar
- - Excluir
- - Listar (incluir ordenação e filtro de busca)
+- Inserir
+- Alterar
+- Excluir
+- Listar (incluir ordenação e filtro de busca)
 
 Assumir:
 - Codificação UTF-8
@@ -46,9 +46,3 @@ Pontos extras:
 - Documentação (openAPI)
 - Cache
 - Proteção da API por chave de api no header X-Api-Key
-
-Observações:
-- Enviar o link do repositório Github para maib.oliveira@zooxsmart.com
-- Qualquer esclarecimento sobre o projeto também devem ser endereçados para o e-mail
-acima.
-- Fico no aguardo da sua avaliação do desafio e estimativa de entrega para gente!
