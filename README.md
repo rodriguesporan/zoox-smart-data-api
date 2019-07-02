@@ -7,28 +7,32 @@ Desenvolver uma API REST usando:
 - Entrada e saída de dados em json
 - Código publicado no github
 
-Desenvolver uma tela de consulta utilizando Angular 2+ (preferencialmente 6) ou VUE: A API deverá expor endpoints para CRUD de cidade e estado:
+A API deverá expor endpoints para CRUD de cidade e estado:
 1. Estado:
-- id
-- nome
-- abreviação (Ex. RJ, SP , etc)
-- data de criação
-- data da última alteração
+   - id
+   - nome
+   - abreviação (Ex. RJ, SP , etc)
+   - data de criação
+   - data da última alteração
+
 2. Cidade:
-- id
-- nome
-- estadoId
-- data de criação
-- data da última alteração
+  - id
+  - nome
+  - estadoId
+  - data de criação
+  - data da última alteração
+
 Operações mínimas para cada entidade:
-- Inserir
-- Alterar
-- Excluir
-- Listar (incluir ordenação e filtro de busca)
+ - Inserir
+ - Alterar
+ - Excluir
+ - Listar (incluir ordenação e filtro de busca)
+
 Assumir:
 - Codificação UTF-8
 - Timezone de Brasília
 - Língua: Português Brasileiro
+
 Serão avaliados:
 - Desenvolvimento seguindo os requisitos acima
 - Código funcionando
@@ -36,3 +40,15 @@ Serão avaliados:
 - Boas práticas (DRY, injeção de dependências, etc)
 - Correto tratamento de erros e exceções
 - Segurança (filtragem e validação dos dados)
+
+Pontos extras:
+- Testes automatizados
+- Documentação (openAPI)
+- Cache
+- Proteção da API por chave de api no header X-Api-Key
+
+Observações:
+- Enviar o link do repositório Github para maib.oliveira@zooxsmart.com
+- Qualquer esclarecimento sobre o projeto também devem ser endereçados para o e-mail
+acima.
+- Fico no aguardo da sua avaliação do desafio e estimativa de entrega para gente!
