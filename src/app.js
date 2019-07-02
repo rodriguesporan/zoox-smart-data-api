@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const routes = require('./routes');
 const mongoose = require('mongoose');
+const routes = require('./routes');
 
 class App {
   constructor() {
@@ -14,7 +14,7 @@ class App {
   middlewares() {
     this.server.use(express.json());
     this.server.use(morgan('dev'));
-    mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
+    mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
   }
 
   routes() {
