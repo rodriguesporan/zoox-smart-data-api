@@ -11,5 +11,6 @@ routes.delete('/states/:id', StateController.delete);
 
 routes.post('/cities', CityController.store);
 routes.get('/cities', CityController.index);
+routes.put('/cities/:id', CityController.update);
 
 module.exports = routes;

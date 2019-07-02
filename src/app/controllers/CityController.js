@@ -31,6 +31,32 @@ class CityController {
       .sort('createdAt');
     return res.json(cities);
   }
+
+  async update(req, res) {
+    const schema = yup.object().shape({
+      name: yup.string(),
+      state: yup.string(),
+    });
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails.' });
+    }
+    const { state: stateId } = req.body;
+    const state = await State.findById(stateId);
+    if (stateId && !state) {
+      return res.status(400).json({ error: 'State does not exists.' });
+    }
+    try {
+      const city = await City.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      });
+      if (!city) {
+        return res.status(400).json({ error: 'City not found.' });
+      }
+      return res.json(city);
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid Id.' });
+    }
+  }
 }
 
 module.exports = new CityController();
