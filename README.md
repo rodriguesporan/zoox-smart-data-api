@@ -1,7 +1,7 @@
 # Zoox Smart Data API
 ## Projeto de Avaliação do Desenvolvedor
 
-[Documentação da API](https://documenter.getpostman.com/view/4046195/S1a8yjzF)
+[Documentação da API](https://documenter.getpostman.com/view/4046195/S1a8yjzF?version=latest)
 
 Desenvolver uma API REST usando:
 - Node.JS.

@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "cf8baf3c-2d86-43cb-ba2d-339cfffb3bc6",
+		"name": "Zoox Smart Data",
+		"description": "Collections **Zoox Smart Data API**\n\nLista, cria, edita e deleta cidades e estados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "States",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Minas Gerais\",\n\t\"uf\": \"mg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/states",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"states"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Cria um novo estado\n\nParâmetros do corpo:\n- name: string\n- uf: string"
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/states",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"states"
+							]
+						},
+						"description": "Lista todos os estados"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Rio de Janeiro\",\n\t\"uf\": \"rj\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/states/5d1b82aea02f3c1981a9bc1d",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"states",
+								"5d1b82aea02f3c1981a9bc1d"
+							]
+						},
+						"description": "Atualiza um estado\n\nParâmetros da query:\n- id: string\n\nParâmetros do corpo:\n- name: string\n- uf: string "
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/states/5d1b93534fe1d420e2ba5533",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"states",
+								"5d1b93534fe1d420e2ba5533"
+							]
+						},
+						"description": "Deleta um estado\n\nParâmetros da query:\n- id: string"
+					},
+					"response": []
+				}
+			],
+			"description": "Os métodos contidos aqui manipulam os estados.\n\nPara criar, editar e deletar é necessário passar o token da aplicação.\n\nPara **gerar um novo token** basta executar o método Create da pasta Sessions.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "32dbc5c7-d5cd-44aa-bb91-aa7bde296893",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b65bc9f-0109-47d8-8f2b-9440e894630a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cities",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Mogi Das Cruzes\",\n\t\"state\": \"5d1ba7ee4c6e5f3b76e304ea\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/cities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities"
+							]
+						},
+						"description": "Cria uma nova cidade\n\nParâmetros do corpo:\n- name: string\n- state (id do estado): string"
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities"
+							]
+						},
+						"description": "Lista todas as cidades"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{bearer}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Mogi Das Cruzes\",\n\t\"state\": \"5d1ba7ee4c6e5f3b76e304ea\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/cities/5d1ba82e4c6e5f3b76e304ed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"5d1ba82e4c6e5f3b76e304ed"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						},
+						"description": "Atualiza uma cidade\n\nParâmetros da query:\n- id: string\n\nParâmetros do corpo:\n- name: string\n- state (id do estado): string "
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearer}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cities/5d1ba7fa4c6e5f3b76e304eb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"5d1ba7fa4c6e5f3b76e304eb"
+							]
+						},
+						"description": "Deleta uma cidade\n\nParâmetros da query:\n- id: string"
+					},
+					"response": []
+				}
+			],
+			"description": "Os métodos contidos aqui manipulam as cidades.\n\nPara criar, editar e deletar é necessário passar o token da aplicação.\n\nPara **gerar um novo token** basta executar o método Create da pasta Sessions.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1466c3af-8054-47c8-8d42-b50ba604ac61",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4e49a00-51d7-4977-8830-4503c9caa8b5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sessions",
+			"item": [
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2794780d-e87d-4f63-849b-24b2ca6e7297",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"bearer\", `Bearer ${jsonData.token}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/sessions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"sessions"
+							]
+						},
+						"description": "Gera um novo token da aplicação"
+					},
+					"response": []
+				}
+			],
+			"description": "O método contido aqui gera um novo token que será utilizado nos demais métodos da API.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6c6b4ba-cc59-4cff-b9b2-61c287711709",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e459cb0b-9e8d-48b9-8922-45c447be82b7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
