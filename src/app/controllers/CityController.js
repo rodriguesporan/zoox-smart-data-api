@@ -11,16 +11,25 @@ class CityController {
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails.' });
     }
-    const stateExists = await State.findById(req.body.state);
-    if (!stateExists) {
+    const state = await State.findById(req.body.state);
+    if (!state) {
       return res.status(400).json({ error: 'State does not exists.' });
     }
     try {
       const city = await City.create(req.body);
+      state.cities.push(city);
+      await state.save();
       return res.json(city);
     } catch ({ errmsg: error }) {
       return res.status(400).json({ error });
     }
+  }
+
+  async index(req, res) {
+    const cities = await City.find({})
+      .populate({ path: 'state', select: ['name', 'uf'] })
+      .sort('createdAt');
+    return res.json(cities);
   }
 }
 

@@ -23,7 +23,9 @@ class StateController {
   }
 
   async index(req, res) {
-    const states = await State.find({}).sort('createdAt');
+    const states = await State.find({})
+      .populate({ path: 'cities', select: ['name'] })
+      .sort('createdAt');
     return res.json(states);
   }
 
