@@ -1,5 +1,7 @@
 const yup = require('yup');
 const State = require('../models/stateModel');
+const City = require('../models/cityModel');
+const { ObjectId } = require('mongoose').Types;
 
 class StateController {
   /**
@@ -71,6 +73,10 @@ class StateController {
       if (!state) {
         return res.status(400).json({ error: 'State not found.' });
       }
+      const cities = await City.find({ state: new ObjectId(req.params.id) });
+      cities.forEach(async ({ _id: id }) => {
+        await City.findByIdAndDelete(id);
+      });
       return res.json({});
     } catch (error) {
       return res.status(400).json({ error: 'Invalid Id.' });
