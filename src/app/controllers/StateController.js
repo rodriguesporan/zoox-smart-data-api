@@ -1,7 +1,9 @@
 const yup = require('yup');
+const { Types } = require('mongoose');
 const State = require('../models/stateModel');
 const City = require('../models/cityModel');
-const { ObjectId } = require('mongoose').Types;
+
+const { ObjectId } = Types;
 
 class StateController {
   /**
